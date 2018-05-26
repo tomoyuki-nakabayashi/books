@@ -43,3 +43,8 @@ for item in zip(*zip([1, 2, 3], [4, 5, 6])):
 first, second, *rest = 0, 1, 2, 3
 first, *inner, last = 0, 1, 2, 3
 (a, b), (c, d) = (1, 2), (3, 4)
+
+'''
+Dictionary
+'''
+squares = {number: number**2 for number in range(100)}
