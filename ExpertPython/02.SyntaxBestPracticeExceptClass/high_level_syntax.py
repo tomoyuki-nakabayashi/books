@@ -72,3 +72,38 @@ Generator expression
 iter = (x**2 for x in range(10) if x % 2 == 0)
 for el in iter:
     print(el)
+
+'''
+Decorator
+'''
+def mydecorator(function):
+    def wrapped(*args, **kwargs):
+        # Write pre-processor
+        result = function(*args, **kwargs)
+        # Write post-processor
+        return result
+    return wrapped
+
+class DecortorAsClass:
+    def __init__(self, function):
+        self.function = function
+
+    def __call__(self, *args, **kwargs):
+        # Write pre-processor
+        result = self.function(*args, **kwargs)
+        # Write post-processor
+        return result
+
+def repeat(number=3):
+    """
+    Repeat decorated function number times.
+    :param number: number of repeat. default 3
+    """
+    def actual_decorator(function):
+        def wrapper(*args, **kwargs):
+            result = None
+            for _ in range(number):
+                result = function(*args, **kwargs)
+            return result
+        return wrapper
+    return actual_decorator
