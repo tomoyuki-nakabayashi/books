@@ -107,3 +107,24 @@ def repeat(number=3):
             return result
         return wrapper
     return actual_decorator
+
+'''
+Context manager
+'''
+with open('/etc/hosts') as hosts:
+    for line in hosts:
+        if line.startwith('#'):
+            continue
+        print(line.strip())
+
+class ContextIllustration:
+    def __enter__(self):
+        print('Enter in context.')
+    
+    def __exit__(self, exc_type, exc_value, traceback):
+        print('Exit from context.')
+
+        if exc_type is None:
+            print('No error occurs.')
+        else:
+            print('Error (%s) occurs.' % exc_value)
